@@ -1,11 +1,11 @@
 # desktop_assistant
-A simple desktop assistant
+# A simple desktop assistant
 
-Simple yet useful desktop assistant that you can run in the background and have it to minor tasks for you if you're busy doing something else. 
+## Simple yet useful desktop assistant that you can run in the background and have it to minor tasks for you if you're busy doing something else. 
 It listens for the wake word which in my case is "hey ever" which it then is ready to take on your commands.
 
 
-Command: go to chess.com
+**Command**: go to chess.com
 Opens a new window that goes to the specified website.
 
 Command: what time is it?, or what's the time?
