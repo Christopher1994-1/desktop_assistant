@@ -241,7 +241,7 @@ def send_text(command):
         phone_number = row[3]
     speak("What do you want to say?")
     audio = get_audio()
-    message = f"Evr AI Systems:\nMessage From Christopher:\n{audio}"
+    message = f"Desktop Assistant:\nMessage From Christopher:\n{audio}"
 
     speak(f"Your message to {name} says {audio}. Want me to send it?")
     command_ny = get_audio()
@@ -307,7 +307,6 @@ def odin_overide():
             db.close()
 
             speak("Would you like me to email it or text it to you?")
-            # print("Would you like me to email it or text it to you?")
             sender = get_audio()
             # sender = input("> ")    # TODO REMOVE
 
