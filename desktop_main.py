@@ -285,29 +285,25 @@ def odin_overide():
         from_=twilio_number,
         to=mine
     )
-    # print(odin_password)    # TODO remove after finish
-    # code_input = input("Pass Code: ").upper()
     code_input = get_audio()
     print(code_input)
     if code_input == odin_password:
-        # print("Command?")   # TODO REMOVE
         speak("Command?")
         new_command = get_audio()
-        # new_command = input("> ")      # TODO REMOVE
         if "whats the password for" in new_command:
             account_name = new_command.split(" ")[4]
-            db = sqlite3.connect("evr_passwords.db")
+            db = sqlite3.connect("passwords.db")
             # (account_name TEXT, username TEXT, password TEXT)
             conn = db.cursor()
             info_list = []
 
-            for row in conn.execute("SELECT * FROM evr_passwords WHERE account_name = ?", [account_name]):
+            for row in conn.execute("SELECT * FROM passwords WHERE account_name = ?", [account_name]):
                 for item in row:
                     info_list.append(item)
 
             info = "\n".join(info_list)
 
-            message = f"""Evr AI Systems\nOdin Override Request:\n \n{info}"""
+            message = f"""Desktop Assistant\nOdin Override Request:\n \n{info}"""
             db.close()
 
             speak("Would you like me to email it or text it to you?")
@@ -328,7 +324,7 @@ def odin_overide():
 
             elif "text it" or "text" == sender:
                 twilio_number = "+19286837692"
-                mine = "+17257260877"
+                mine = os.environ.get('my_number')
                 account_sid = os.environ.get('twilio_account_SID')
                 auth_token = os.environ.get('twilio_auth_token')
                 client = Client(account_sid, auth_token)
@@ -357,9 +353,7 @@ def odin_overide():
             db.close()
 
             speak("Would you like me to email it or text it to you?")
-            # print("Would you like me to email it or text it to you?")
             sender = get_audio()
-            # sender = input("> ")    # TODO REMOVE
 
             if "email it" or "email" == sender:
                 sender = 'evr.systems.auto@gmail.com'
@@ -373,7 +367,7 @@ def odin_overide():
 
             elif "text it" or "text" == sender:
                 twilio_number = "+19286837692"
-                mine = "+17257260877"
+                mine = os.environ.get('my_number')
                 account_sid = os.environ.get('twilio_account_SID')
                 auth_token = os.environ.get('twilio_auth_token')
                 client = Client(account_sid, auth_token)
