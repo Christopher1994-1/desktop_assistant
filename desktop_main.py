@@ -40,7 +40,6 @@ def get_audio():
 
 def open_web(command):
     """main function that allows to open the web with given command 'open up google.com'"""
-    # TODO maybe we can put some logic in here that determines 'open web' or 'open folder'
     remove_open = str(command.split('go to'))
     speak("Opening" + remove_open)
     url = f'http://{command}'
@@ -92,7 +91,6 @@ def get_weather(command):
     data = requests.get(url)
     content = data.json()
 
-    # TODO just run the fucking thing
     overcast = content["weather"][0]["description"]
     name = content['name']
     temps = int(content['main']['temp'])
@@ -119,7 +117,7 @@ def wiki(command):
 
 def local_weather(command):
     # Function that tells the local weather.
-    current_loc = 'vancouver'    # Change to your local
+    current_loc = 'vancouver'    # Change to your city
     api_key = os.environ.get('weather_api_key')
     url = f'https://api.openweathermap.org/data/2.5/weather?q={current_loc}&appid={api_key}&units=imperial'
     data = requests.get(url)
@@ -135,8 +133,7 @@ def local_weather(command):
 
 
 def note(command):
-    def note(command):
-        """function that takes a note when commanded too and adds note to new note file"""
+    """function that takes a note when commanded too and adds note to new note file"""
 
     time_filename = datetime.datetime.utcnow()
     time = datetime.datetime.now().strftime('%I-%M%p')
@@ -311,7 +308,7 @@ def odin_overide():
             if "email it" or "email" == sender:
                 sender = 'evr.systems.auto@gmail.com'
                 receiver = 'kirko190255@gmail.com'
-                subject = 'Evr AI Systems: Odin Override: Password Info'
+                subject = 'Desktop Assistant: Odin Override: Password Info'
                 paw = os.environ.get('google_paw')
 
                 yag = yagmail.SMTP(user=sender, password=paw)
@@ -355,7 +352,7 @@ def odin_overide():
             if "email it" or "email" == sender:
                 sender = 'evr.systems.auto@gmail.com'
                 receiver = 'kirko190255@gmail.com'
-                subject = 'Evr AI Systems: Odin Override: Password Info'
+                subject = 'Desktop Assistant: Odin Override: Password Info'
                 paw = os.environ.get('google_paw')
 
                 yag = yagmail.SMTP(user=sender, password=paw)
