@@ -116,7 +116,7 @@ def wiki(command):
 
 
 def local_weather(command):
-    # Function that tells the local weather.
+    """Function that tells the local weather."""
     current_loc = 'vancouver'    # Change to your city
     api_key = os.environ.get('weather_api_key')
     url = f'https://api.openweathermap.org/data/2.5/weather?q={current_loc}&appid={api_key}&units=imperial'
@@ -152,7 +152,7 @@ def note(command):
 
 
 def tell_date():
-    # Function that tells the date
+    """Function that tells the date"""
     today = datetime.date.today()
     day = datetime.date.isoweekday(today)
     daysOfWeek = {1: "Monday",
@@ -196,9 +196,9 @@ def spell(command):
 
 
 def create_list(command):
-    # function that takes in user input and creates a shopping list of that.
-    # example: user says 'create new walmart list' computer then says, what would you like to add
-    # then user gives a list of things they want to add
+    """function that takes in user input and creates a shopping list of that.
+         example: user says 'create new walmart list' computer then says, what would you like to add
+            then user gives a list of things they want to add"""
     ind = command.split(" ")
     twilio_number = "+19286837692"
     mine = os.environ.get("my_number")
@@ -223,9 +223,9 @@ def create_list(command):
 
 
 def send_text(command):
-    # function that sends a text for the user, example: user says, send a text to Grace Random.
-    # Then the computer looks into a database you have your contacts in, and retrieves the number
-    # that belongs to that data and texts it, after the computer asks the user for the message
+    """function that sends a text for the user, example: user says, send a text to Grace Random.
+        Then the computer looks into a database you have your contacts in, and retrieves the number
+        that belongs to that data and texts it, after the computer asks the user for the message"""
     command_split = command.split(" ")
     first_name = command_split[4].capitalize()
     last_name = command_split[5].capitalize()
@@ -258,10 +258,10 @@ def send_text(command):
 
 
 def odin_overide():
-    # Odin override command triggers this function which is the function you call when you want to do something
-    # like accessing a passwords database or something else. You say the command and the function gets called
-    # creating a random number that is then sent to your phone, and you read it back to the function. And then
-    # you can proceed with whatever. I only have one command inside this function, that's the password database search
+    """Odin override command triggers this function which is the function you call when you want to do something
+    like accessing a passwords database or something else. You say the command and the function gets called
+    creating a random number that is then sent to your phone, and you read it back to the function. And then
+    you can proceed with whatever. I only have one command inside this function, that's the password database search"""
     speak("Odin Override pass code required!")
     letters = string.ascii_uppercase
     nums = string.digits
@@ -303,7 +303,6 @@ def odin_overide():
 
             speak("Would you like me to email it or text it to you?")
             sender = get_audio()
-            # sender = input("> ")    # TODO REMOVE
 
             if "email it" or "email" == sender:
                 sender = 'evr.systems.auto@gmail.com'
@@ -388,9 +387,7 @@ def cal_fun():
     first_number = broken[1]
     second_number = broken[3]
     operator_thing = broken[2]
-    print(broken)
     result = ""
-    print(operator_thing)
     if operator_thing == "*":
         result = int(second_number) * int(first_number)
         speak(f"{first_number} times {second_number} equals {result}")
