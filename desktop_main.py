@@ -445,9 +445,6 @@ if __name__ == "__main__":
                 speak("What do you want me to write down?")
                 command1 = get_audio()
                 note(command1)
-            #
-            # if "whats" or "what's" in command:
-            #     calculate(command)
 
             if "how do you spell" in command:
                 spell(command)
