@@ -33,9 +33,8 @@ def get_audio():
 
         try:
             said = record.recognize_google(audio)
-            print(said)     # remove after testing
         except Exception as e:
-            print("Excetion: " + str(e))
+            print("Exception: " + str(e))
     return said.lower()
 
 
@@ -138,7 +137,6 @@ def local_weather(command):
 def note(command):
     def note(command):
         """function that takes a note when commanded too and adds note to new note file"""
-    # TODO maybe change the file name to add time in with date
 
     time_filename = datetime.datetime.utcnow()
     time = datetime.datetime.now().strftime('%I-%M%p')
@@ -314,7 +312,7 @@ def odin_overide():
                 sender = 'evr.systems.auto@gmail.com'
                 receiver = 'kirko190255@gmail.com'
                 subject = 'Evr AI Systems: Odin Override: Password Info'
-                paw = 'bortgdzfuhnjvisa'
+                paw = os.environ.get('google_paw')
 
                 yag = yagmail.SMTP(user=sender, password=paw)
                 yag.send(to=receiver, subject=subject, contents=message)
@@ -337,7 +335,7 @@ def odin_overide():
 
         elif "whats the wifi password" in new_command:
             account_name = new_command.split(" ")[2]
-            db = sqlite3.connect("evr_passwords.db")
+            db = sqlite3.connect("passwords.db")
             # (account_name TEXT, username TEXT, password TEXT)
             conn = db.cursor()
             info_list = []
@@ -348,7 +346,7 @@ def odin_overide():
 
             info = "\n".join(info_list)
 
-            message = f"""Evr AI Systems\nOdin Override Request:\n \n{info}"""
+            message = f"""Desktop Assistant\nOdin Override Request:\n \n{info}"""
             db.close()
 
             speak("Would you like me to email it or text it to you?")
@@ -358,7 +356,7 @@ def odin_overide():
                 sender = 'evr.systems.auto@gmail.com'
                 receiver = 'kirko190255@gmail.com'
                 subject = 'Evr AI Systems: Odin Override: Password Info'
-                paw = 'bortgdzfuhnjvisa'
+                paw = os.environ.get('google_paw')
 
                 yag = yagmail.SMTP(user=sender, password=paw)
                 yag.send(to=receiver, subject=subject, contents=message)
@@ -415,7 +413,7 @@ def cal_fun():
 
 
 if __name__ == "__main__":
-    wake_word = 'hey ever'
+    wake_word = 'hey ever'  # change it to whatever you like
     greets = random.choice(greetings)
 
     while True:
