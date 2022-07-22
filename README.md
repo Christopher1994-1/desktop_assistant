@@ -31,4 +31,14 @@ Command: Create new
 This command is a bit more useful, the command is used for creating shopping lists. It works the same way as the 'write this down' command but instead of
 opening a notepad file it sends you a text of the list you created using Twilio's API.
 
-Command: what is today's date
+Command: what is today's date?
+This commands is a simple one that when called tells back the date to the user.
+
+Command: Send a text - 
+This command when heard looks into a contacts database and searches for the matching information given by first and last name. It then asks what would you like
+to say and sends a text to the number it finds related to the name.
+
+Command: Odin Override:
+This command is for other uses that you may want to add that need another level of authorisation. Example. You need a password for an account you have saved
+in a database. You simply use the command, it then sends you a text with a six charactor number which you then repeat back to the assistant. Then you can carry on with
+the information you want or whatever deed you program into it.
